@@ -1,0 +1,7 @@
+https://dev.mysql.com/doc/refman/5.5/en/keywords.html
+http://support.hostgator.com/articles/specialized-help/technical/phpmyadmin/mysql-variable-types
+https://dev.mysql.com/doc/refman/5.6/en/show-columns.html
+
+For the backtick key use 'ALT+Numpad9+Numpad6'. ` `
+
+http://www.tutorialspoint.com/mysql/mysql-date-time-functions.htm
