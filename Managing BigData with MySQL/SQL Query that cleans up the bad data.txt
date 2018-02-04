@@ -1,0 +1,6 @@
+select sum(amt)/count(distinct saledate) as avg_daily_rev, (extract(month from saledate) || extract(year from saledate)) as month_year, store
+from trnsact
+where stype='P' and month_year <> '8 2005'
+group by month_year, store
+having count(distinct saledate) > 19
+order by avg_daily_rev DESC;
