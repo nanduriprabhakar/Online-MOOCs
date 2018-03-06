@@ -48,6 +48,12 @@ for k=1:k
 end
 J = 1/m*(sum(sum(-y1.*log(h)-(one-y1).*log(one-h))));
 
+theta1_reshaping = Theta1(:,2:size(Theta1,2));
+theta2_reshaping = Theta2(:,2:size(Theta2,2));
+
+J = J + (lambda/(2*m))*(sum(sum(theta1_reshaping.^2))+sum(sum(theta2_reshaping.^2)));
+
+
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: You should complete the code by working through the
@@ -81,23 +87,17 @@ J = 1/m*(sum(sum(-y1.*log(h)-(one-y1).*log(one-h))));
 %               and Theta2_grad from Part 2.
 %
 
+error_layer3 = a3-y1;
+error_layer2 = error_layer3*theta2_reshaping.*sigmoidGradient(z2);
+Theta1_grad = (1/m)*(Theta1_grad + error_layer2'*a1);
 
+Theta2_grad = (1/m)*(Theta2_grad + error_layer3'*a2);
 
+theta1_reshaping = [zeros(size(theta1_reshaping,1),1),theta1_reshaping];
+theta2_reshaping = [zeros(size(theta2_reshaping,1),1),theta2_reshaping];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Theta1_grad = Theta1_grad + ((lambda/m)* theta1_reshaping);
+Theta2_grad = Theta2_grad + ((lambda/m)* theta2_reshaping);
 
 % -------------------------------------------------------------
 
